@@ -1,5 +1,7 @@
 stream_name;ROCKIN' KARAOKE RELAY 2024
 stream_link;https://www.youtube.com/watch?v=xfifdKrvgI4
+streamer_name;Lumin Tsukiboshi
+mp3_image;lumin.png
 Yuzurenai Negai;9:55;13:58
 Diamonds;14:13;18:20
 In My Dream;18:34;22:20
