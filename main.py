@@ -23,7 +23,8 @@ print("Link: " + stream_link)
 print("Song Data: " + str(songs))
 
 #download stream
-stream_file = "stream.mp4"
+#stream_file = "stream.mp4"
+stream_file = "/tmp/stream/stream.mp4"
 if not os.path.isfile(stream_file):
     print("Downloading stream, please wait")
     ytdl = shell(['yt-dlp', stream_link, '-o', stream_file])
@@ -32,12 +33,16 @@ else:
     print("Stream file exists, cutting songs")
 
 #Split songs from stream
+stream_name = stream_name.strip()
+shell(['mkdir', '-p', "output/" + stream_name])
+shell(['mkdir', '-p', "output/" + stream_name + "/mp3"])
+shell(['mkdir', '-p', "output/" + stream_name + "/mp4"])
 for song in songs:
-    if not os.path.isfile("output/mp4/" + song[0] + ".mp4"): #MP4 Version
-        ff = shell(['ffmpeg', '-y', '-ss', song[1], '-to', song[2], '-i', stream_file, '-c', 'copy', "output/mp4/" + song[0] + ".mp4"])
+    if not os.path.isfile("output/" + stream_name + "/mp4/" + song[0] + ".mp4"): #MP4 Version
+        ff = shell(['ffmpeg', '-y', '-ss', song[1], '-to', song[2], '-i', stream_file, '-c', 'copy', "output/" + stream_name + "/mp4/" + song[0] + ".mp4"])
         if str(ff.returncode) != "0":
             print("Error cutting song: " + song[0])
-    if not os.path.isfile("output/mp3/" + song[0] + ".mp3"): #MP3 Version
-        ff = shell(['ffmpeg', '-y', '-i', "output/mp4/" + song[0] + ".mp4", "output/mp3/" + song[0] + ".mp3"])
+    if not os.path.isfile("output/" + stream_name + "/mp3/" + song[0] + ".mp3"): #MP3 Version
+        ff = shell(['ffmpeg', '-y', '-i', "output/" + stream_name + "/mp4/" + song[0] + ".mp4", "output/" + stream_name + "/mp3/" + song[0] + ".mp3"])
         if str(ff.returncode) != "0":
             print("Error cutting song: " + song[0])
