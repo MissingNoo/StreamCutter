@@ -9,8 +9,8 @@ stream.close()
 
 #get stream data
 stream_name = data[0].strip().split(";")[1]
-del data[0]
 stream_link = data[1].strip().split(";")[1]
+del data[1]
 del data[0]
 
 #Separate song data
@@ -53,6 +53,9 @@ for song in songs:
         tg['tracknumber'] = song_num
         song_num += 1
         tg['album'] = stream_name
+        with open('musicart.png', 'rb') as img_in:
+            tg['artwork'] = img_in.read()
         tg.save()
         if str(ff.returncode) != "0":
             print("Error cutting song: " + song[0])
+print("All songs saved and tags applied")
