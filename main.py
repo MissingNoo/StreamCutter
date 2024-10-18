@@ -10,6 +10,10 @@ stream.close()
 #get stream data
 stream_name = data[0].strip().split(";")[1]
 stream_link = data[1].strip().split(";")[1]
+streamer_name = data[2].strip().split(";")[1]
+mp3_image = data[3].strip().split(";")[1]
+del data[3]
+del data[2]
 del data[1]
 del data[0]
 
@@ -19,6 +23,7 @@ for music in data:
     songs.append(music.replace(" ", "|").strip().replace("|", " ").split(";"))
 
 #Program Start
+print("Streamer: " + streamer_name + " [ " + mp3_image + " ]")
 print("Stream: " + stream_name)
 print("Link: " + stream_link)
 print("Song Data: " + str(songs))
@@ -29,9 +34,9 @@ stream_file = "/tmp/stream/stream.mp4"
 if not os.path.isfile(stream_file):
     print("Downloading stream, please wait")
     ytdl = shell(['yt-dlp', stream_link, '-o', stream_file])
-    print("Stream downloaded")
+    print("Stream downloaded, processing songs")
 else:
-    print("Stream file exists, cutting songs")
+    print("Stream file exists, processing songs")
 
 #Split songs from stream
 stream_name = stream_name.strip()
@@ -49,12 +54,13 @@ for song in songs:
         tg = music_tag.load_file("output/" + stream_name + "/mp3/" + song[0] + ".mp3")
         tg['title'] = song[0].split(" - ")[0].replace(" ", "|").strip().replace("|", " ")
         tg['title'] = song[0].split(" - ")[0].replace(" ", "|").strip().replace("|", " ")
-        tg['artist'] = "Lumin Tsukiboshi"
+        tg['artist'] = streamer_name
         tg['tracknumber'] = song_num
         song_num += 1
         tg['album'] = stream_name
-        with open('musicart.png', 'rb') as img_in:
-            tg['artwork'] = img_in.read()
+        if os.path.isfile(mp3_image):
+            with open(mp3_image, 'rb') as img_in:
+                tg['artwork'] = img_in.read()
         tg.save()
         if str(ff.returncode) != "0":
             print("Error cutting song: " + song[0])
