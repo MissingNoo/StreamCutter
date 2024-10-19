@@ -30,7 +30,7 @@ print("Song Data: " + str(songs))
 
 #download stream
 #stream_file = "stream.mp4"
-stream_file = "/tmp/stream/stream.mp4"
+stream_file = "/tmp/stream/" + stream_name + ".mp4"
 if not os.path.isfile(stream_file):
     print("Downloading stream, please wait")
     ytdl = shell(['yt-dlp', stream_link, '-o', stream_file])
