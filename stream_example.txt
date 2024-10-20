@@ -2,10 +2,11 @@ stream_name;ROCKIN' KARAOKE RELAY 2024
 stream_link;https://www.youtube.com/watch?v=xfifdKrvgI4
 streamer_name;Lumin Tsukiboshi
 mp3_image;lumin.png
-Yuzurenai Negai;9:55;13:58
-Diamonds;14:13;18:20
-In My Dream;18:34;22:20
-Haru;22:45;27:15
-Unravel;27:16;31:04
-Funny Bunny;31:06;34:24
-Sekai ga Owaru Made wa;34:30;39:30
+upload_to_youtube;yes
+Yuzurenai Negai - Magic Knight Rayearth;9:55;13:58
+Diamonds - Princess Princess;14:13;18:20
+Haru-Spring - Diana Garnet;18:34;22:20
+In My Dream - Sasaki Sayaka;22:45;27:15
+Unravel - Tokyo Ghoul;27:16;31:04
+Funny Bunny - The Pillows;31:06;34:24
+Sekai ga Owaru Made wa - WANDS;34:30;39:30
