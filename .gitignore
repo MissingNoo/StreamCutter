@@ -1,1 +1,6 @@
 /client_secrets.json
+*.mp3
+*.mp4
+*.png
+*.txt
+__pycache__
