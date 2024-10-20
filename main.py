@@ -72,7 +72,7 @@ for song in songs:
             print("Error cutting song: " + song[0])
     if upload_to_youtube == "yes":
         print("Uploading " + song[0])
-        up = shell(['./yt-upload', '[' + streamer_name + ']' + ' ' + song[0], stream_link, mp4_path])
+        up = shell(['./yt-upload', '[' + streamer_name + ']' + ' ' + song[0], streamer_name, stream_link, mp4_path])
         if str(up.returncode) != "0":
             print("Upload failed!")
 print("All songs saved and tags applied")
